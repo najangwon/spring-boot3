@@ -30,8 +30,12 @@ public class UserController2 {
             return "Database connection failed! Error: " + e.getMessage();
         }
     }
+    @GetMapping("/mysql2")
+    public String dbTest2() {
+    String sql = "SELECT testcol FROM test WHERE testid = 1";
 
-
+    return jdbcTemplate.queryForObject(sql, String.class);
+    }
     @Autowired
     private StringRedisTemplate redis;
 
